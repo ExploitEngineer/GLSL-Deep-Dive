@@ -1,9 +1,17 @@
+🔹 What is GLSL?
+GLSL (OpenGL Shading Language) is a C-like programming language used to write shaders, which run directly on the GPU for high-performance rendering. It is used in WebGL, Three.js, Unity, Unreal Engine, and many other real-time graphics applications.
+
+🔹 What Are Shaders?
+Shaders are small programs that run in parallel on the GPU to handle visual effects. There are two main types in WebGL: 1️⃣ Vertex Shader – Handles object transformations, positions, and effects at the vertex level.
+2️⃣ Fragment Shader (Pixel Shader) – Handles colors, textures, and pixel effects.
+✅ Bonus Shaders: Geometry Shaders, Tessellation Shaders, Compute Shaders (Advanced)
+
+
 1️⃣ Vectors & Scalars in GLSL
 
 📌 What are Scalars?
 A scalar is a single value (number). It can be an int, float or bool.
 Scalars are the building blocks of vectors.
-
 
 
 📌 What are Vectors?
