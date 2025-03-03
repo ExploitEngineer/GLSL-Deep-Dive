@@ -117,3 +117,81 @@ Global Variable Error	Needs constant values (const)
 void main()	No return values, must set gl_FragColor
 Dot Product	Angle between vectors, lighting
 Cross Product	Finds perpendicular vector (normals)
+
+
+
+2️⃣ Matrix and Transformations
+
+1️⃣ Scaling Matrix
+A scaling matrix scales a vector along one or more axes.
+
+It has non-zero values on the diagonal (usually different from 1.0).
+All non-diagonal elements are 0.0 (meaning no shearing or translation happens).
+
+Example (Scaling by 2 on X and 3 on Y):
+mat3 scalingMatrix = mat3(2.0, 0.0, 0.0,
+                          0.0, 3.0, 0.0,
+                          0.0, 0.0, 1.0);
+The diagonal values {2.0, 3.0, 1.0} indicate scaling.
+X is scaled by 2, Y is scaled by 3.
+If the diagonal values are less than 1.0, it shrinks the object.
+If they are negative, it reflects the object as well.
+
+2️⃣ Translation Matrix
+A translation matrix moves a vector from one position to another.
+
+Translation only happens in a mat4 (4x4 matrix) because in GLSL, translation is applied using the last column (position [0][3], [1][3], [2][3]).
+Example (Translate by 5 on X, 3 on Y):
+mat4 translationMatrix = mat4(1.0, 0.0, 0.0, 5.0,   // X translation
+                              0.0, 1.0, 0.0, 3.0,   // Y translation
+                              0.0, 0.0, 1.0, 0.0,   // Z translation
+                              0.0, 0.0, 0.0, 1.0);
+The last column {5.0, 3.0, 0.0, 1.0} represents the translation values.
+5.0 moves the object right, 3.0 moves it up.
+If it were -5.0 and -3.0, it would move left and down.
+🔹 Key Rule: If a matrix contains non-zero values in the last column of a mat4, it’s a translation matrix.
+
+
+3️⃣ Reflection Matrix
+A reflection matrix flips an object over a specific axis.
+
+It has negative values on the diagonal for the axis being reflected.
+Example (Reflection Across Y-Axis):
+mat3 reflectionMatrix = mat3(-1.0, 0.0, 0.0,  // Flip X
+                              0.0, 1.0, 0.0,  // Y stays same
+                              0.0, 0.0, 1.0); // Z stays same
+The -1.0 on the X diagonal means X values are inverted, causing reflection across the Y-axis.
+If the Y diagonal were -1.0, it would reflect across the X-axis.
+
+
+4️⃣ Rotation Matrix
+A rotation matrix rotates an object around an axis.
+
+It uses sine (sin) and cosine (cos) values.
+rotation matrices don’t have 0s in diagonal like scaling does.
+
+💡 Quick Summary Table
+Matrix Type       	Identifying Features
+Scaling	            Non-zero values on the diagonal, all other values 0.0
+Translation       	Only in mat4, values in last column ([0][3], [1][3], [2][3])
+Reflection	        One or more negative values on the diagonal
+Rotation	          Contains sin and cos values
+
+🟢 2D Translation Matrix (mat3)
+For 2D transformations, a 3x3 matrix can be used:
+
+1 0 tx
+0 1 ty
+0 0 1
+
+(tx, ty) represents the translation amount in the X and Y directions.
+🔵 3D Translation Matrix (mat4)
+For 3D transformations, you need a 4x4 matrix:
+
+1 0 0 tx
+0 1 0 ty
+0 0 1 tz
+0 0 0 1
+
+(tx, ty, tz) represents the movement along X, Y, Z axes.
+The last column holds translation values.
