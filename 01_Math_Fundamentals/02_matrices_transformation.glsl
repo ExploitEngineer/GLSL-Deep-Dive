@@ -149,4 +149,56 @@ float value = m[1][0]; // Answer : B
 // INFO: Second Quiz
 mat3 scaleMatrix = mat3(2.0, 0.0, 0.0,
                         0.0, 2.0, 0.0,
-                        0.0, 0.0, 1.0); // Answer : Reflection 
+                        0.0, 0.0, 1.0); // Answer : Reflection
+
+
+/*
+🔹 Matrices – Forget The Numbers, Think of Transformations
+A matrix is just a way to change a shape by: 1️⃣ Scaling (Making it bigger/smaller)
+2️⃣ Rotating (Spinning it)
+3️⃣ Translating (Moving it)
+*/
+
+
+/*
+🔹 Scaling – Making Something Bigger or Smaller
+If you want to double the size of an object, you multiply by 2:
+*/
+mat2 scaleMatrix = mat2(2.0,  0.0,
+                         0.0, 2.0);
+/*
+The 2.0 means "Make everything twice as big."
+If you use 0.5, it makes everything smaller.
+*/
+vec2 newVertex = scaleMatrix * vertex;
+
+
+
+/*
+🔹 Rotation – Spinning an Object
+If you want to rotate an object, you use sin and cos again!
+*/
+mat2 rotateMatrix = mat2(cos(angle), -sin(angle),
+                         sin(angle), cos(angle));
+/*
+This makes the object spin based on angle.
+If angle changes over time, the object keeps rotating.
+
+To rotate a vertex:
+*/
+
+vec2 rotateVertex = rotateMatrix * vertex;
+
+
+/*
+🔹 Translation – Moving an Object
+To move something in GLSL, you add a vector:
+*/
+
+vec2 newPosition = vertex + vec2(1.0, 0.5);
+
+/*
+The 1.0 moves it right
+The 0.5 moves it up
+✅ The object shifts position!
+*/

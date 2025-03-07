@@ -77,3 +77,46 @@ Just remember that swapping sin and cos doesn’t reverse the motion, and tan is
 180° rotation uses π radians.
 360° rotation (full circle) uses 2π radians.
 */
+
+
+
+// 🔹 SIN, COS – DEEP EXPLANATION
+/*
+📌 What are Sin & Cos?
+Both are based on a circle.
+Imagine a unit circle (a circle with radius 1) centered at (0,0):
+
+🔹 First, Forget About Math – Imagine a Ferris Wheel 🎡
+Think about a Ferris wheel. You sit in a seat, and as the wheel turns, your position changes.
+1️⃣ When you're at the top, you're at (0,1).
+2️⃣ When you're at the bottom, you're at (0,-1).
+3️⃣ When you're on the right, you're at (1,0).
+4️⃣ When you're on the left, you're at (-1,0).
+This motion is circular movement—and it's controlled by sin and cos!
+
+🔹 What is the Radius?
+The radius is just how far you are from the center.
+If the radius is 1, you’re always 1 unit away from the center.
+If the radius is 2, you’re always 2 units away.
+Imagine stretching a string from the center of the Ferris wheel to your seat—that’s the radius.
+
+
+🔹 How Do Sin & Cos Control Movement?
+Your position on the circle at any moment is:
+*/
+x = cos(angle)
+y = sin(angle)
+/*
+cos(angle) controls left & right (X-axis movement)
+sin(angle) controls top & bottom (Y-axis movement)
+Example:
+At 0°, you are at (1,0).
+At 90°, you are at (0,1).
+At 180°, you are at (-1,0).
+At 270°, you are at (0,-1).
+
+🔹 Visualizing Sin & Cos in GLSL
+This GLSL code makes a point move in a circle:
+*/
+float t = iTime; // Time increases
+vec2 pos = vec2(cos(t), sin(t)); // Move in a circle
